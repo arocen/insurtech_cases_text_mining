@@ -1,7 +1,6 @@
 # Convert docx files to txt.
 
 import pypandoc
-import glob
 from dotenv import load_dotenv
 import os
 

@@ -1,4 +1,9 @@
 import os
+import shutil
+from tqdm import tqdm
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_txt_paths(root_dir):
     '''Get paths of all txt files under a same root directory.'''
@@ -25,3 +30,16 @@ def load_txt_files(txt_paths):
             cases.append(content)
 
     return cases
+
+def fetch(root_dir, dest_folder):
+    '''Fetch all txt files to a new location under a same parent folder.'''
+    txt_paths = get_txt_paths(root_dir)
+    for path in tqdm(txt_paths):
+        basename = os.path.basename(path)
+        dst = os.path.join(dest_folder, basename)
+        shutil.copyfile(path, dst)
+    return
+
+# dest_folder = os.environ.get("txtFiles")
+# root_dir = os.environ.get("cases_parent_directory")
+# fetch(root_dir, dest_folder)

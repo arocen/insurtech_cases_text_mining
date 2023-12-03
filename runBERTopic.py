@@ -114,8 +114,12 @@ embeddings = sentence_model.encode(cut_cases, show_progress_bar=True)
 
 
 # Reduce dimensions
+
+# When documents are too few, umap may occur error.
+# You can't use spectral initialisation (init='spectral', the default) when n_components is greater or equal to the number of samples.
+# Since dataset has 204 samples this is the issue. You can either use 203 instead of 204, or use init='random' for the 204 dimensional case as a workaround.
 umap_embeddings = umap.UMAP(n_neighbors=15,
-                            n_components=5,
+                            n_components=2,
                             min_dist=0.0,
                             metric='cosine',
                             random_state=2023).fit_transform(embeddings)

@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic import BERTopic
-import re
 
 load_dotenv()
 

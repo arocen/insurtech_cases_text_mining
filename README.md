@@ -8,5 +8,6 @@
 ## Visualization
 ### topicwizard
 - [ ] Check if the order of corpus passed to topicwizard is the same to that passed to BERTopic. (Add sort() to path list of txt files. Ensure the parent folder of txt files are same to BERTopic and topicwizard.)
+- [ ] Use corpus after cutting words? Or just use raw corpus?
 - [ ] Make wordcloud font more clear.
 - [ ] Assign titles to documents in documents panel.

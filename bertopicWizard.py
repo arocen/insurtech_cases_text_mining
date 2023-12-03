@@ -7,7 +7,7 @@ import loadTxt
 
 load_dotenv()
 
-# Change default font
+# Chinese font added in source code of topicwizard. Caution if it needs update.
 
 
 # Load corpus

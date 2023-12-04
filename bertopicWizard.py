@@ -11,9 +11,10 @@ load_dotenv()
 
 
 # Load corpus
-root_dir = os.environ.get("cases_parent_directory")
-txt_paths = loadTxt.get_txt_paths(root_dir)
-cases = loadTxt.load_txt_files(txt_paths)
+# root_dir = os.environ.get("cases_parent_directory")
+# txt_paths = loadTxt.get_txt_paths(root_dir)
+# cases = loadTxt.load_txt_files(txt_paths)
+
 
 # Load BERTopic model from saved pickle file
 model_path = os.environ.get("bertopic_model_save_path")

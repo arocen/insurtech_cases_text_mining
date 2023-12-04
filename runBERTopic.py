@@ -95,16 +95,19 @@ def show_and_save(figure, save_path):
 
 
 
-# Load txt
-root_dir = os.environ.get("cases_parent_directory")
-txt_paths = loadTxt.get_txt_paths(root_dir)
-cases = loadTxt.load_txt_files(txt_paths)
+# # Load txt
+# root_dir = os.environ.get("cases_parent_directory")
+# txt_paths = loadTxt.get_txt_paths(root_dir)
+# cases = loadTxt.load_txt_files(txt_paths)
 
-# Cut into words
-my_dict_path = ...
-cut_cases = cut(cases)
-# Save results
-save_cut_results(cut_cases)
+# # Cut into words
+# my_dict_path = ...
+# cut_cases = cut(cases)
+# # Save results
+# save_cut_results(cut_cases)
+
+# Load cut txt files
+cut_folder = os.environ.get("cutTxtFiles")
 
 
 # Load word embeddings
@@ -144,7 +147,7 @@ stopwords = stopwords1 + stopwords2
 # Tokenize
 token_pattern1 = '([\w\+]+)'                     # 确保'产品+服务'被匹配到
 token_pattern2 = r'(?<!\w)(?=\w\w)[\w\+]+(?!\w)' # 确保'产品+服务'被匹配到，且不匹配单个字符长度的词
-vectorizer_model = CountVectorizer(stop_words=stopwords, min_df=2, token_pattern=token_pattern2)
+vectorizer_model = CountVectorizer(ngram_range=(1, 3), stop_words=stopwords, min_df=2, token_pattern=token_pattern2)
 
 
 ctfidf_model = ClassTfidfTransformer()
@@ -156,7 +159,8 @@ topic_model = BERTopic(language="multilingual",
                        top_n_words=30, 
                        calculate_probabilities=True, 
                        ctfidf_model=ctfidf_model, 
-                       verbose=True)
+                       verbose=True,
+                       n_gram_range=[1, 3])
 topic = topic_model.fit(cut_cases, embeddings)
 
 

@@ -2,8 +2,8 @@
 
 ## Model
 ### BERTopic
-- [ ] Enable 2-grams, 3-grams and rerun BERTopic.
-
+- [x] Enable 2-grams, 3-grams and rerun BERTopic.
+- [x] Enable loading dictionary and rerun jieba
 
 ## Visualization
 ### topicwizard

@@ -121,10 +121,10 @@ embeddings = sentence_model.encode(cut_cases, show_progress_bar=True)
 # You can't use spectral initialisation (init='spectral', the default) when n_components is greater or equal to the number of samples.
 # Since dataset has 204 samples this is the issue. You can either use 203 instead of 204, or use init='random' for the 204 dimensional case as a workaround.
 umap_embeddings = umap.UMAP(n_neighbors=15,
-                            n_components=2,
+                            n_components=5,
                             min_dist=0.0,
                             metric='cosine',
-                            random_state=2023).fit_transform(embeddings)
+                            random_state=42).fit_transform(embeddings)
 
 
 # Clustering
@@ -174,20 +174,20 @@ topic_model.save(model_save_path)
 # Visualize results
 print(topic.get_topic_info())    # 查看各主题信息
 
-visualize_topics1 = topic_model.visualize_topics()
+# visualize_topics1 = topic_model.visualize_topics()
 # 可视化结果保存至html中，可以动态显示信息
-visualize_topics1.write_html(os.environ.get("vis_topic"))
+# visualize_topics1.write_html(os.environ.get("vis_topic"))
 
 # 将所有主题保存到Excel
-excel_save_path = os.environ.get("excel_save_path")
-topic_model.get_topic_info().to_excel(excel_save_path)
-print(f"All information saved to {excel_save_path}")
+# excel_save_path = os.environ.get("excel_save_path")
+# topic_model.get_topic_info().to_excel(excel_save_path)
+# print(f"All information saved to {excel_save_path}")
 
 # 层级可视化
 hierarchy_fig = topic_model.visualize_hierarchy()
 show_and_save(hierarchy_fig, os.environ.get("hierarchy_topics_vis"))
 
 # Visualize Hierarchical Documents
-hierarchical_topics = topic_model.hierarchical_topics(cut_cases)
-hierarchical_doc_fig = topic_model.visualize_hierarchical_documents(cut_cases, hierarchical_topics, embeddings=umap_embeddings, width=2000, height=1000)
-show_and_save(hierarchical_doc_fig, os.environ.get("heirarchy_docs"))
+# hierarchical_topics = topic_model.hierarchical_topics(cut_cases)
+# hierarchical_doc_fig = topic_model.visualize_hierarchical_documents(cut_cases, hierarchical_topics, embeddings=umap_embeddings, width=2000, height=1000)
+# show_and_save(hierarchical_doc_fig, os.environ.get("heirarchy_docs"))

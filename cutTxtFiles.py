@@ -38,6 +38,6 @@ def loadCutTxtFiles(parent_folder)->list[str]:
     
     return cases
 
-folder = os.environ.get("txtFiles")
-dest_folder = os.environ.get("cutTxtFiles")
-cutTxtFiles(folder, dest_folder)
+# folder = os.environ.get("txtFiles")
+# dest_folder = os.environ.get("cutTxtFiles")
+# cutTxtFiles(folder, dest_folder)

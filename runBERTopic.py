@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-import loadTxt
+import loadTxt, cutTxtFiles
 import jieba
 from sentence_transformers import SentenceTransformer
 import umap
@@ -108,7 +108,7 @@ def show_and_save(figure, save_path):
 
 # Load cut txt files
 cut_folder = os.environ.get("cutTxtFiles")
-
+cut_cases = cutTxtFiles.loadCutTxtFiles(cut_folder)
 
 # Load word embeddings
 sentence_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")

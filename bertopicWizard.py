@@ -4,6 +4,7 @@ import topicwizard
 import os
 from dotenv import load_dotenv
 import loadTxt
+import cutTxtFiles
 
 load_dotenv()
 
@@ -15,10 +16,13 @@ load_dotenv()
 # txt_paths = loadTxt.get_txt_paths(root_dir)
 # cases = loadTxt.load_txt_files(txt_paths)
 
+# Load cut corpus
+cut_folder = os.environ.get("cutTxtFiles")
+cut_cases = cutTxtFiles.loadCutTxtFiles(cut_folder)
 
 # Load BERTopic model from saved pickle file
 model_path = os.environ.get("bertopic_model_save_path")
 model = BERTopic.load(model_path)
 
 pipeline = topicwizard.bertopic_pipeline(model)
-topicwizard.visualize(pipeline=pipeline, corpus=cases)
+topicwizard.visualize(pipeline=pipeline, corpus=cut_cases)

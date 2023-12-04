@@ -27,8 +27,8 @@ def cutTxtFiles(folder, dest_folder, dictinoary=os.environ.get("dict1")):
 
 def loadCutTxtFiles(parent_folder)->list[str]:
     '''Load txt files in a same parent folder.'''
-    filenames = [f for f in os.listdir(folder) if f.endswith(".txt")]
-    filepaths = sorted([os.path.join(folder, filename) for filename in filenames])
+    filenames = [f for f in os.listdir(parent_folder) if f.endswith(".txt")]
+    filepaths = sorted([os.path.join(parent_folder, filename) for filename in filenames])
 
     cases = []
     for path in filepaths:
